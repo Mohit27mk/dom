@@ -153,13 +153,21 @@ function onSubmit(e) {
     deleteBtn.className='btn btn-danger btn-sm  delete';
     deleteBtn.appendChild(document.createTextNode('delete'));
     li.appendChild(deleteBtn);
-    
+
+    var editBtn=document.createElement('button');
+editBtn.className='btn btn-primary btn-sm  edit';
+editBtn.appendChild(document.createTextNode('edit'));
+    li.appendChild(editBtn);
     deleteBtn.onclick=()=>{
         localStorage.removeItem(myobj.Email);
         userList.removeChild(li);
     } 
-
-   
+    editBtn.onclick=()=>{ 
+        localStorage.removeItem(myobj.Email);
+        userList.removeChild(li);
+        nameInput.value = myobj.name;
+    emailInput.value = myobj.Email;
+    } 
     nameInput.value = '';
     emailInput.value = '';
   }
