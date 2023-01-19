@@ -120,6 +120,9 @@ const emailInput = document.querySelector('#email');
 const msg = document.querySelector('.msg');
 const userList = document.querySelector('#users');
 
+
+
+
 // Listen for form submit
 myForm.addEventListener('submit', onSubmit);
 
@@ -134,7 +137,13 @@ function onSubmit(e) {
     // Remove error after 3 seconds
     setTimeout(() => msg.remove(), 3000);
   } else {
-    localStorage.setItem(nameInput.value,    emailInput.value)
+    let myobj={
+        'name':nameInput.value,
+        'Email':emailInput.value
+    }
+    
+    let myobjs=JSON.stringify(myobj);
+    localStorage.setItem('obj',myobjs);
     
   }
 }
