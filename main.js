@@ -143,7 +143,20 @@ function onSubmit(e) {
     }
     
     let myobjs=JSON.stringify(myobj);
-    localStorage.setItem('obj',myobjs);
-    
+    localStorage.setItem(emailInput.value,myobjs);
+    const li = document.createElement('li');
+
+    // Add text node with input values
+    li.appendChild(document.createTextNode(`${nameInput.value}: ${emailInput.value}`));
+
+    // Add HTML
+    // li.innerHTML = `<strong>${nameInput.value}</strong>e: ${emailInput.value}`;
+
+    // Append to ul
+    userList.appendChild(li);
+
+    // Clear fields
+    nameInput.value = '';
+    emailInput.value = '';
   }
 }
