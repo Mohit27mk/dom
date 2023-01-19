@@ -148,15 +148,20 @@ function onSubmit(e) {
 
     // Add text node with input values
     li.appendChild(document.createTextNode(`${nameInput.value}: ${emailInput.value}`));
-
-    // Add HTML
-    // li.innerHTML = `<strong>${nameInput.value}</strong>e: ${emailInput.value}`;
-
-    // Append to ul
     userList.appendChild(li);
+    var deleteBtn=document.createElement('button');
+    deleteBtn.className='btn btn-danger btn-sm  delete';
+    deleteBtn.appendChild(document.createTextNode('delete'));
+    li.appendChild(deleteBtn);
+    
+    deleteBtn.onclick=()=>{
+        localStorage.removeItem(myobj.Email);
+        userList.removeChild(li);
+    } 
 
-    // Clear fields
+   
     nameInput.value = '';
     emailInput.value = '';
   }
 }
+
