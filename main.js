@@ -218,8 +218,14 @@ window.addEventListener("DOMContentLoaded",()=>{
         userList.removeChild(li);
         axios.delete(`https://crudcrud.com/api/844bf6c747e640e09938b3616d765732/appointmentdata/${obj._id}`)
       } 
-      
-      
+      editBtn.onclick=()=>{ 
+        axios.delete(`https://crudcrud.com/api/844bf6c747e640e09938b3616d765732/appointmentdata/${obj._id}`)
+        userList.removeChild(li);
+        nameInput.value = obj.name;
+    emailInput.value = obj.Email;
+    } 
+    nameInput.value = '';
+    emailInput.value = '';
  }
 
    
