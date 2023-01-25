@@ -146,15 +146,15 @@ function onSubmit(e) {
     
     let myobjs=JSON.stringify(myobj);
     localStorage.setItem(emailInput.value,myobjs);
-    // const li = document.createElement('li');
+    const li = document.createElement('li');
 
-    // // Add text node with input values
-    // li.appendChild(document.createTextNode(`${nameInput.value}: ${emailInput.value}`));
-    // userList.appendChild(li);
-    // var deleteBtn=document.createElement('button');
-    // deleteBtn.className='btn btn-danger btn-sm  delete';
-    // deleteBtn.appendChild(document.createTextNode('delete'));
-    // li.appendChild(deleteBtn);
+    // Add text node with input values
+    li.appendChild(document.createTextNode(`${nameInput.value}: ${emailInput.value}`));
+    userList.appendChild(li);
+    var deleteBtn=document.createElement('button');
+    deleteBtn.className='btn btn-danger btn-sm  delete';
+    deleteBtn.appendChild(document.createTextNode('delete'));
+    li.appendChild(deleteBtn);
 
  //Api call
 
@@ -169,10 +169,10 @@ function onSubmit(e) {
 
 
 
-//     var editBtn=document.createElement('button');
-// editBtn.className='btn btn-primary btn-sm  edit';
-// editBtn.appendChild(document.createTextNode('edit'));
-//     li.appendChild(editBtn);
+    var editBtn=document.createElement('button');
+editBtn.className='btn btn-primary btn-sm  edit';
+editBtn.appendChild(document.createTextNode('edit'));
+    li.appendChild(editBtn);
     deleteBtn.onclick=()=>{
         localStorage.removeItem(myobj.Email);
         userList.removeChild(li);
@@ -214,8 +214,15 @@ window.addEventListener("DOMContentLoaded",()=>{
   editBtn.className='btn btn-primary btn-sm  edit';
   editBtn.appendChild(document.createTextNode('edit'));
       li.appendChild(editBtn);
+      deleteBtn.onclick=()=>{
+        userList.removeChild(li);
+        axios.delete(`https://crudcrud.com/api/844bf6c747e640e09938b3616d765732/appointmentdata/${obj._id}`)
+      } 
+      
+      
  }
 
+   
 
 // "use strict";
 
