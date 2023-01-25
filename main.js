@@ -141,18 +141,20 @@ function onSubmit(e) {
         'name':nameInput.value,
         'Email':emailInput.value
     }
+
+    
     
     let myobjs=JSON.stringify(myobj);
     localStorage.setItem(emailInput.value,myobjs);
-    const li = document.createElement('li');
+    // const li = document.createElement('li');
 
-    // Add text node with input values
-    li.appendChild(document.createTextNode(`${nameInput.value}: ${emailInput.value}`));
-    userList.appendChild(li);
-    var deleteBtn=document.createElement('button');
-    deleteBtn.className='btn btn-danger btn-sm  delete';
-    deleteBtn.appendChild(document.createTextNode('delete'));
-    li.appendChild(deleteBtn);
+    // // Add text node with input values
+    // li.appendChild(document.createTextNode(`${nameInput.value}: ${emailInput.value}`));
+    // userList.appendChild(li);
+    // var deleteBtn=document.createElement('button');
+    // deleteBtn.className='btn btn-danger btn-sm  delete';
+    // deleteBtn.appendChild(document.createTextNode('delete'));
+    // li.appendChild(deleteBtn);
 
  //Api call
 
@@ -163,10 +165,14 @@ function onSubmit(e) {
   console.log(err);
  })
 
-    var editBtn=document.createElement('button');
-editBtn.className='btn btn-primary btn-sm  edit';
-editBtn.appendChild(document.createTextNode('edit'));
-    li.appendChild(editBtn);
+ 
+
+
+
+//     var editBtn=document.createElement('button');
+// editBtn.className='btn btn-primary btn-sm  edit';
+// editBtn.appendChild(document.createTextNode('edit'));
+//     li.appendChild(editBtn);
     deleteBtn.onclick=()=>{
         localStorage.removeItem(myobj.Email);
         userList.removeChild(li);
@@ -182,8 +188,33 @@ editBtn.appendChild(document.createTextNode('edit'));
   }
 }
 
+window.addEventListener("DOMContentLoaded",()=>{
+  axios.get("https://crudcrud.com/api/844bf6c747e640e09938b3616d765732/appointmentdata")
+  .then((res)=>{
+    for(var i=0;i<res.data.length;i++){
+      showUser(res.data[i]);
+    }
+  }).catch((err)=>{
+    console.log(err);
+  })
+ })
 
+ function showUser(obj){
+  const userList = document.querySelector('#users');
+  const li = document.createElement('li');
 
+  // Add text node with input values
+  li.appendChild(document.createTextNode(`${obj.name}: ${obj.Email}`));
+  userList.appendChild(li);
+  var deleteBtn=document.createElement('button');
+  deleteBtn.className='btn btn-danger btn-sm  delete';
+  deleteBtn.appendChild(document.createTextNode('delete'));
+  li.appendChild(deleteBtn);
+  var editBtn=document.createElement('button');
+  editBtn.className='btn btn-primary btn-sm  edit';
+  editBtn.appendChild(document.createTextNode('edit'));
+      li.appendChild(editBtn);
+ }
 
 
 // "use strict";
